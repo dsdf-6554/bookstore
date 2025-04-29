@@ -1,10 +1,15 @@
 package com.BookStore.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "购物车表") // 映射到数据库中的表名
 public class ShoppingCart {
+    // Getters and Setters
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "购物车ID") // 映射到数据库中的字段名
@@ -21,36 +26,4 @@ public class ShoppingCart {
     @Column(name = "数量", nullable = false)
     private Integer quantity;
 
-    // Getters and Setters
-    public Long getShoppingCartId() {
-        return shoppingCartId;
-    }
-
-    public void setShoppingCartId(Long shoppingCartId) {
-        this.shoppingCartId = shoppingCartId;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Book getBook() {
-        return book;
-    }
-
-    public void setBook(Book book) {
-        this.book = book;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
 }

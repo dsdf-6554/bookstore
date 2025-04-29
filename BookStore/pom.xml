@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
+
     <!-- 父项目依赖 -->
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -19,6 +20,11 @@
 
     <!-- 项目依赖 -->
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -34,8 +40,15 @@
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
             <scope>runtime</scope>
-            <version>12.4.0.jre8</version> <!-- 明确指定SQL Server驱动版本 -->
+            <version>12.4.2.jre11</version> <!-- 明确指定SQL Server驱动版本 -->
         </dependency>
+        <!-- Swagger UI for Spring Boot 3 -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+
 
         <!-- Spring Boot Starter Web -->
         <dependency>
@@ -66,16 +79,31 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- H2 Database (内存数据库，用于测试) -->
+        <!-- H2 测试数据库 -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- Spring Data Redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <!-- Redis 客户端 Lettuce（新增的） -->
+        <dependency>
+            <groupId>io.lettuce</groupId>
+            <artifactId>lettuce-core</artifactId>
+        </dependency>
+
+        <!-- Spring Cache -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cache</artifactId>
         </dependency>
+
     </dependencies>
 
     <!-- 构建配置 -->
@@ -85,14 +113,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>3.2.0</version> <!-- 明确指定插件版本 -->
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <version>3.2.0</version>
             </plugin>
 
             <!-- Maven Compiler Plugin -->
@@ -101,8 +122,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version> <!-- 明确指定插件版本 -->
                 <configuration>
-                    <source>1.8</source> <!-- 设置编译器使用的 Java 版本 -->
-                    <target>1.8</target> <!-- 设置编译器目标字节码版本 -->
+                    <source>21</source>
+                    <target>21</target>
                 </configuration>
             </plugin>
         </plugins>

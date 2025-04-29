@@ -1,10 +1,15 @@
 package com.BookStore.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "管理员表") // 映射到数据库中的表名
 public class Admin {
+    // Getters and Setters
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "管理员ID") // 映射到数据库中的字段名
@@ -25,52 +30,7 @@ public class Admin {
     @Column(name = "权限等级", nullable = false)
     private String permissionLevel;
 
-    // Getters and Setters
-    public Long getAdminId() {
-        return adminId;
-    }
+    @Column(name = "管理员类型", nullable = false)
+    private String adminType;  // 书城管理员、仓库管理员
 
-    public void setAdminId(Long adminId) {
-        this.adminId = adminId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public java.util.Date getRegistrationTime() {
-        return registrationTime;
-    }
-
-    public void setRegistrationTime(java.util.Date registrationTime) {
-        this.registrationTime = registrationTime;
-    }
-
-    public String getPermissionLevel() {
-        return permissionLevel;
-    }
-
-    public void setPermissionLevel(String permissionLevel) {
-        this.permissionLevel = permissionLevel;
-    }
 }

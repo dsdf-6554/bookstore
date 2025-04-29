@@ -1,10 +1,15 @@
 package com.BookStore.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "反馈表") // 映射到数据库中的表名
 public class Feedback {
+    // Getters and Setters
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "反馈ID") // 映射到数据库中的字段名
@@ -20,36 +25,4 @@ public class Feedback {
     @Column(name = "反馈时间", nullable = false, updatable = false)
     private java.util.Date feedbackTime;
 
-    // Getters and Setters
-    public Long getFeedbackId() {
-        return feedbackId;
-    }
-
-    public void setFeedbackId(Long feedbackId) {
-        this.feedbackId = feedbackId;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public String getFeedbackContent() {
-        return feedbackContent;
-    }
-
-    public void setFeedbackContent(String feedbackContent) {
-        this.feedbackContent = feedbackContent;
-    }
-
-    public java.util.Date getFeedbackTime() {
-        return feedbackTime;
-    }
-
-    public void setFeedbackTime(java.util.Date feedbackTime) {
-        this.feedbackTime = feedbackTime;
-    }
 }

@@ -1,10 +1,15 @@
 package com.BookStore.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "用户表") // 映射到数据库中的表名
 public class User {
+    // Getters and Setters
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "用户ID") // 映射到数据库中的字段名
@@ -31,68 +36,10 @@ public class User {
     @Column(name = "权限等级", nullable = false)
     private String permissionLevel;
 
-    // Getters and Setters
-    public Long getUserId() {
-        return userId;
-    }
+    @Column(name = "用户状态", nullable = false)
+    private String userStatus = "未登录"; // 默认值为未登录
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+    @Column(name = "账号状态", nullable = false)
+    private String accountStatus = "正常"; // 默认正常
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public java.util.Date getRegistrationTime() {
-        return registrationTime;
-    }
-
-    public void setRegistrationTime(java.util.Date registrationTime) {
-        this.registrationTime = registrationTime;
-    }
-
-    public java.util.Date getLastLoginTime() {
-        return lastLoginTime;
-    }
-
-    public void setLastLoginTime(java.util.Date lastLoginTime) {
-        this.lastLoginTime = lastLoginTime;
-    }
-
-    public String getPermissionLevel() {
-        return permissionLevel;
-    }
-
-    public void setPermissionLevel(String permissionLevel) {
-        this.permissionLevel = permissionLevel;
-    }
 }
